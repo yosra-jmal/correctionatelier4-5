@@ -1,0 +1,71 @@
+<h1>
+  Classroom index
+</h1>
+{{ dump(classrooms) }}
+<table border="2">
+  <thead>
+    <tr>
+      <th>
+        Id
+      </th>
+      <th>
+        Name
+      </th>
+      <th>
+        actions
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for classroom in classrooms %}
+      <tr>
+        <td>
+          {{ classroom.id }}
+        </td>
+        <td>
+          {{ classroom.name }}
+        </td>
+        <td>
+          {# <a href="{{
+              path(
+                'app_classroom_read',
+                {
+                  id: classroom.id
+                }
+              )
+              }}">
+              show
+            </a> #}
+          <a href="{{
+              path(
+                'app_classroom_edit',
+                {
+                  id: classroom.id
+                }
+              )
+              }}">
+              edit
+            </a>
+          <a href="{{
+            path(
+              'app_classroom_delete',
+              {
+                id: classroom.id
+              }
+            )
+            }}">
+            delete
+          </a>
+        </td>
+      </tr>
+    {% else %}
+      <tr>
+        <td colspan="3">
+          no records found
+        </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{# <a href="{{ path('app_classroom_new') }}">Create new</a> #}
